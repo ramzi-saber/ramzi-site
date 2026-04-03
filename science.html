@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramzi Saber — Science & Data</title>
+<meta name="description" content="Ramzi Saber science and data portfolio — astrophysics, research, engineering, publications, awards, and media.">
+<meta name="theme-color" content="#05060f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="rs-shared.css">
+<style>
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--ca);z-index:200;width:0%;pointer-events:none;transition:width .1s linear;}
+/* SCIENCE HERO */
+.sci-hero{height:100vh;background:var(--cosmos);position:relative;display:flex;align-items:flex-end;overflow:hidden;}
+.sci-hero .stars{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.hero-neb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;}
+.hn1{width:600px;height:600px;background:rgba(74,108,247,.2);top:-200px;right:-100px;animation:pneb2 10s ease-in-out infinite;}
+.hn2{width:400px;height:400px;background:rgba(100,60,200,.15);bottom:-100px;left:-80px;animation:pneb2 8s ease-in-out infinite;animation-delay:-4s;}
+.hn3{width:300px;height:300px;background:rgba(74,108,247,.1);top:50%;left:30%;animation:pneb2 12s ease-in-out infinite;animation-delay:-6s;}
+@keyframes pneb2{0%,100%{opacity:.6;transform:scale(1);}50%{opacity:1;transform:scale(1.06);}}
+.hero-orb{position:absolute;border-radius:50%;border:1px solid rgba(74,108,247,.14);top:50%;left:50%;transform:translate(-50%,-50%);animation:orbspin var(--t,30s) linear infinite;}
+.ho1{width:500px;height:500px;--t:30s;}
+.ho2{width:700px;height:700px;--t:50s;animation-direction:reverse;border-color:rgba(74,108,247,.08);}
+.ho3{width:900px;height:900px;--t:80s;border-color:rgba(74,108,247,.04);}
+.ho1::before,.ho2::before{content:'';position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:7px;height:7px;border-radius:50%;background:var(--ca);box-shadow:0 0 12px var(--ca);}
+.ho2::before{width:5px;height:5px;background:rgba(150,100,255,.8);}
+@keyframes orbspin{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+.hero-content{position:relative;z-index:2;padding:0 80px 80px;max-width:900px;}
+.hero-eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ca);opacity:.7;margin-bottom:20px;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(54px,8vw,110px);font-weight:300;line-height:.95;color:var(--ct);margin-bottom:32px;}
+.hero-title em{font-style:italic;opacity:.4;}
+.hero-sub{font-size:11px;letter-spacing:.15em;line-height:1.9;color:var(--cm);max-width:480px;}
+.hero-scroll{position:absolute;right:80px;bottom:80px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;}
+.hero-scroll span{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);writing-mode:vertical-rl;}
+.hero-scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,rgba(255,255,255,.25),transparent);animation:sline 2s ease-in-out infinite;}
+@keyframes sline{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+.hero-badge{position:absolute;top:40%;right:80px;z-index:2;border:1px solid var(--cb);background:rgba(5,6,15,.7);backdrop-filter:blur(10px);padding:20px 24px;text-align:right;}
+.hero-badge-num{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:var(--ca);line-height:1;}
+.hero-badge-lbl{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--cm);margin-top:4px;}
+.hero-canvas{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.45;}
+.feature-band{position:relative;z-index:2;margin-top:-1px;}
+.mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04);}
+.mission-card{padding:28px 24px;background:var(--csuf);}
+.mission-k{font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--ca);margin-bottom:8px;}
+.mission-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:var(--cstar);margin-bottom:8px;}
+.mission-desc{font-size:10px;line-height:1.8;color:var(--cm);}
+@media(max-width:768px){.mission-grid{grid-template-columns:1fr;}.hero-canvas{opacity:.3;}}
+
+.scroll-top{position:fixed;right:24px;bottom:24px;z-index:120;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(74,108,247,.2);background:rgba(5,6,15,.72);backdrop-filter:blur(12px);color:var(--ca);text-decoration:none;opacity:0;transform:translateY(12px);pointer-events:none;transition:all .3s;}
+.scroll-top.show{opacity:1;transform:translateY(0);pointer-events:auto;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;}
+.hero-pill{font-size:8px;letter-spacing:.16em;text-transform:uppercase;padding:8px 12px;border:1px solid rgba(74,108,247,.18);background:rgba(74,108,247,.08);color:rgba(200,216,255,.84);}
+.section-lead{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(200,216,255,.3);margin:-34px 0 34px;}
+.sitem,.pub,.pitem,.ccard,.clink{transition:transform .25s, background .25s, box-shadow .25s;}
+.sitem:hover,.pub:hover,.pitem:hover,.ccard:hover,.clink:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.18);}
+@media(max-width:768px){.scroll-top{right:16px;bottom:16px;width:42px;height:42px;}}
+
+</style>
+</head>
+<body>
+<div class="page-veil" id="veil"></div>
+<div class="progress-bar" id="progressBar"></div>
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="ring"></div>
+
+<nav>
+  <a href="index.html" class="nav-back cosmos-back" id="backBtn">← All Worlds</a>
+  <ul class="nav-links">
+    <li><a href="#experience" class="cn">Work</a></li>
+    <li><a href="#research" class="cn">Research</a></li>
+    <li><a href="#awards" class="cn">Honors</a></li>
+    <li><a href="#contact" class="cn">Contact</a></li>
+  </ul>
+  <a href="music.html" class="world-switch switch-to-studio" id="switchStudio">Enter Studio →</a>
+</nav>
+
+<!-- SCIENCE HERO -->
+<div class="sci-hero" id="top">
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <div class="stars" id="stHero"></div>
+  <div class="hero-neb hn1"></div>
+  <div class="hero-neb hn2"></div>
+  <div class="hero-neb hn3"></div>
+  <div class="hero-orb ho1"></div>
+  <div class="hero-orb ho2"></div>
+  <div class="hero-orb ho3"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Astrophysics &amp; Data Science</div>
+    <h1 class="hero-title">From the<br>Streets to<br>the <em>Stars</em></h1>
+    <p class="hero-sub">Caltech · NASA JPL · Roman Space Telescope<br>Astrophysics, data systems, and public-facing science<br>Union City, NJ → Pasadena, CA → New York City</p>
+    <div class="hero-pills" aria-hidden="true"><span class="hero-pill">Astrophysics</span><span class="hero-pill">Data Engineering</span><span class="hero-pill">Research Leadership</span><span class="hero-pill">Published Research</span></div>
+  </div>
+  <div class="hero-badge">
+    <div class="hero-badge-num">4</div>
+    <div class="hero-badge-lbl">Publications</div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</div>
+<div class="feature-band marquee"><div class="marquee-track">
+  <span class="marquee-item">nasa jpl</span><span class="marquee-item">roman space telescope</span><span class="marquee-item">caltech astrophysics</span><span class="marquee-item">exoplanet discovery</span><span class="marquee-item">published research</span><span class="marquee-item">data systems</span><span class="marquee-item">nasa jpl</span><span class="marquee-item">roman space telescope</span><span class="marquee-item">caltech astrophysics</span><span class="marquee-item">exoplanet discovery</span><span class="marquee-item">published research</span><span class="marquee-item">data systems</span>
+</div></div>
+
+<!-- MAIN SCIENCE CONTENT -->
+<section class="csec" id="experience">
+  <div class="neb n1" style="opacity:.1;"></div>
+  <div class="stars" id="stSec" style="opacity:.25;"></div>
+  <div class="si">
+    <div class="eyebrow rev">The Story</div>
+    <div class="section-lead rev">Research, resilience, engineering, and public impact.</div>
+    <div class="currently rev">
+      <span class="currently-dot"></span>
+      Currently — <strong>Working on Fintech in NYC, giving science talks, and making music like always</strong>
+    </div>
+    <div class="biog rev">
+      <div class="btxt">
+        <p>Born in <strong>Morocco</strong>, Ramzi Saber arrived in the United States in 2009 speaking no English. He and his mother were <strong>homeless</strong> for a time — navigating a new country with nothing but will. From those streets, he looked up — and built a life around that horizon.</p>
+        <p>At 15, he began independent astronomy research that led to an exoplanet discovery and major science-fair recognition.</p>
+        <p>He earned a degree in <strong>Astrophysics at Caltech</strong>, interned at <strong>NASA JPL</strong> on the Roman Space Telescope — producing work <strong>scheduled for launch integration</strong> — and co-authored multiple peer-reviewed papers. From Union City to the instrumentation of a space telescope — and now into the next chapter.</p>
+      </div>
+      <div>
+        <div class="sgrid">
+          <div class="sitem"><div class="snum" data-target="15" data-suffix="">0</div><div class="slbl">Age at exoplanet discovery</div></div>
+          <div class="sitem"><div class="snum" data-target="113" data-suffix="">0</div><div class="slbl">Light-years to Ramzi's exoplanet</div></div>
+          <div class="sitem"><div class="snum" data-target="5" data-suffix="">0</div><div class="slbl">Years of independent research</div></div>
+          <div class="sitem"><div class="snum" data-target="96" data-suffix="%">0%</div><div class="slbl">Monte Carlo pipeline accuracy</div></div>
+          <div class="sitem"><div class="snum" data-target="150" data-suffix="k+">0</div><div class="slbl">Monte Carlo simulations run</div></div>
+          <div class="sitem"><div class="snum" data-target="400" data-suffix="k+">0</div><div class="slbl">Stellar objects in Caltech DB</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="photo-strip rev">
+      <div class="photo-frame"><img src="grad1.jpg" alt="Caltech graduation" loading="lazy"><div class="photo-cap">Caltech · Class of 2025</div></div>
+      <div class="photo-frame"><img src="grad2.jpg" alt="Graduation" loading="lazy"><div class="photo-cap">B.S. Astrophysics</div></div>
+      <div class="photo-frame"><img src="grad3.jpg" alt="With Mom" loading="lazy"><div class="photo-cap">With Mom · Caltech</div></div>
+      <div class="photo-frame"><img src="grad4.jpg" alt="With classmates" loading="lazy"><div class="photo-cap">Class of 2025</div></div>
+    </div>
+    <blockquote class="bquote rev">
+      "My true passion is to aid in humanity's development of knowledge of what's out there — not just by leaving a hypothetical, but by actually showing them… whether it's by a satellite, a telescope, a rover, or a rocket ship."
+      <cite>— Ramzi Saber · Diversity in Action Magazine · May/June 2020</cite>
+    </blockquote>
+    <div class="eyebrow rev" style="margin-top:0;">Professional Experience</div>
+    <div class="exp-grid">
+      <div class="exp-card"><div class="exp-left"><div class="exp-org">NASA Jet Propulsion Laboratory</div><div class="exp-role">Data Calibration Engineer</div><div class="exp-tags"><span class="exp-tag">Roman Telescope</span><span class="exp-tag">Launch Software</span></div></div><div class="exp-right"><p>Engineered image post-processing algorithms in MATLAB for the <strong>Roman Space Telescope's Coronagraph Instrument</strong>, removing cosmic-ray artifacts using Laplacian Edge Detection. Validated via <strong>150,000+ Monte Carlo simulations</strong> at 96% accuracy. Work is published and <strong>scheduled for integration into the telescope's official launch software</strong>.</p></div></div>
+      <div class="exp-card"><div class="exp-left"><div class="exp-org">California Institute of Technology</div><div class="exp-role">Data Engineer — Astronomical Systems</div><div class="exp-tags"><span class="exp-tag">Python · Django</span></div></div><div class="exp-right"><p>Built and maintained an astronomical database of <strong>over 400,000 stellar objects</strong>. Architected back-end astrometric algorithms in Python and Django. Revamped the front-end with JavaScript and HTML/CSS — improving researcher access globally.</p></div></div>
+      <div class="exp-card"><div class="exp-left"><div class="exp-org">Union City Board of Education</div><div class="exp-role">Research Mentor</div><div class="exp-tags"><span class="exp-tag">600+ Students</span></div></div><div class="exp-right"><p>Organizes a summer research camp of <strong>600+ students</strong>. Built partnerships with NJIT, NJCU, Rutgers, Columbia, and Princeton. Students have gone on to win <strong>national awards and scholarships</strong>.</p></div></div>
+      <div class="exp-card"><div class="exp-left"><div class="exp-org">R&amp;D Council of New Jersey</div><div class="exp-role">Environmental Data Analyst</div><div class="exp-tags"><span class="exp-tag">SQL · Python · R</span></div></div><div class="exp-right"><p>Led a multi-agency Hudson River contamination study. Developed a <strong>decision-support framework adopted by the council</strong> for ongoing environmental policy decisions.</p></div></div>
+      <div class="exp-card"><div class="exp-left"><div class="exp-org">American Chemical Society</div><div class="exp-role">Scientific Researcher</div><div class="exp-tags"><span class="exp-tag">MATLAB · C++</span></div></div><div class="exp-right"><p>Research on urban water treatment. Demonstrated a <strong>prototype additive reducing pollutant levels</strong>. Received <strong>top honors at both NJ and NY ACS Symposia</strong>.</p></div></div>
+      <div class="exp-card"><div class="exp-left"><div class="exp-org">American Express</div><div class="exp-role">Financial Advisor</div><div class="exp-tags"><span class="exp-tag">Excel · Salesforce</span></div></div><div class="exp-right"><p>Advised immigrant families on university costs, retirement, and investments — increasing financial readiness for enrollment.</p></div></div>
+      <div class="exp-card"><div class="exp-left"><div class="exp-org">Johnson &amp; Johnson</div><div class="exp-role">Project Manager — Intern</div><div class="exp-tags"><span class="exp-tag">1st Place</span></div></div><div class="exp-right"><p>Led team to build algorithmic note-taking for medical personnel — cutting charting time by <strong>~20%</strong>. Won <strong>1st place</strong> in J&amp;J's intern innovation challenge.</p></div></div>
+    </div>
+    <div class="eyebrow rev" style="margin-top:88px;">Mission Profile</div>
+    <div class="mission-grid rev" style="margin-bottom:88px;">
+      <div class="mission-card"><div class="mission-k">Precision</div><div class="mission-title">Build with rigor</div><div class="mission-desc">Whether it is telescope software, statistical validation, or a research database, the work is engineered to hold up under scrutiny.</div></div>
+      <div class="mission-card"><div class="mission-k">Translation</div><div class="mission-title">Make complexity legible</div><div class="mission-desc">A major strength of the site is not just technical depth, but the ability to turn hard science into narratives people can actually feel and remember.</div></div>
+      <div class="mission-card"><div class="mission-k">Trajectory</div><div class="mission-title">Aim beyond the page</div><div class="mission-desc">This portfolio is framed less like a static resume and more like an active launch sequence for graduate research, engineering, and public impact.</div></div>
+    </div>
+    <div class="eyebrow rev" style="margin-top:88px;">Education</div>
+    <div class="tl rev"><div class="tlline"></div>
+      <div class="titem"><div class="tyr">Caltech · 2021–2025<br>Pasadena, CA</div><div class="tc"><h3>B.S. Astrophysics — California Institute of Technology</h3><p>One of only <strong>6 Astrophysics majors</strong>. Senior thesis: <em>"Direct Imaging of Exoplanets Closer to Stars."</em> 10-week Synthetic Biology fellowship. Multiple published papers. NASA JPL internship.</p><div class="ttags"><span class="ttag">1 of 6 Majors</span><span class="ttag">Published</span></div></div></div>
+      <div class="titem"><div class="tyr">Jose Marti STEM<br>2017–2021 · Union City</div><div class="tc"><h3>High School Diploma — Jose Marti STEM Academy</h3><p>GPA: 4.7 · National High School Genius Inductee 2021. Astronomy Club &amp; Research Club Founder. Class President. First freshman in Union City history to win gold at NJ Regional Science Fair.</p><div class="ttags"><span class="ttag">GPA 4.7</span><span class="ttag">Class President</span></div></div></div>
+    </div>
+    <div class="eyebrow rev" style="margin-top:88px;" id="research">Published Research</div>
+    <div class="pub-list rev">
+      <a href="https://curj.caltech.edu/2023/07/26/removal-of-cosmic-ray-impacts-on-the-roman-space-telescope-coronagraph-instrument/" target="_blank" class="pub"><div class="pub-num">01 — Caltech Undergraduate Research Journal · 2023</div><div class="ptitle">Removal of Cosmic Ray Impacts on the Roman Space Telescope Coronagraph Instrument</div><div class="pmeta">Ramzi Saber · Mentors: Marie Ygouf, Rob Zellem (NASA JPL) · Laplacian Edge Detection · 150,000+ Monte Carlo simulations · 96% accuracy</div><span class="pbadge">CURJ 2023 · Launch Integration</span></a>
+      <a href="https://ui.adsabs.harvard.edu/abs/2023AJ....165....3K/abstract" target="_blank" class="pub"><div class="pub-num">02 — The Astronomical Journal · 2023</div><div class="ptitle">Spectroscopic Confirmation of a Population of Isolated, Intermediate-mass Young Stellar Objects</div><div class="pmeta">Saber, R.; Povich, M. S.; de Souza, R. S.; Krone-Martins, A.; Ishida, E. E. O.; Zucker, C.; Benjamin, R. A.; Hillenbrand, L. A.; Castro-Ginard, A.; Zhou, X.; COIN Collaboration · Palomar/DBSP · SPICY ~120,000 candidates</div><span class="pbadge">The Astronomical Journal · Peer-reviewed</span></a>
+      <a href="https://ui.adsabs.harvard.edu/abs/2023yCat..51650003K/abstract" target="_blank" class="pub"><div class="pub-num">03 — VizieR / NASA ADS · 2023</div><div class="ptitle">VizieR Online Data Catalog: SPICY II — Spectroscopic Observations of 26 Young Stellar Objects</div><div class="pmeta">Kuhn, M. A.; Saber, R.; Povich, M. S.; et al. · COIN Collaboration · Palomar Observatory DBSP · 3816–9015 Å</div><span class="pbadge">NASA ADS · VizieR Catalog</span></a>
+      <a href="https://ui.adsabs.harvard.edu/abs/2016JMTPR..16....1M/abstract" target="_blank" class="pub"><div class="pub-num">04 — Journal of Modern Trends in Physics Research · 2016</div><div class="ptitle">Detection of Interplanetary Coronal Mass Ejections' Signature Using Artificial Neural Networks</div><div class="pmeta">Mawad, R.; Radi, A.; Saber, R.; et al. · Solar cycle 23 · 97% CME-ICME match rate · 3 citations</div><span class="pbadge">JMTPR 2016 · 3 Citations</span></a>
+    </div>
+    <div class="eyebrow rev" style="margin-top:88px;">The Discovery</div>
+    <div class="dd rev"><div class="ddh" id="ddH"><h3>Independent Discovery of an Exoplanet — HD-92788 System</h3><span class="ddtog" id="ddI">+</span></div>
+      <div class="ddbody" id="ddB"><div class="ddinner">
+        <div class="ddphases">
+          <div class="ddph"><div class="phnum">01</div><div class="phyr">Freshman Year · 2017–2018</div><div class="phtitle">Mathematical Calculations</div><div class="phdesc">Targeted HD-92788 — a sun-like G-type star with anomalously high energy for a two-planet system. Applied statistics and calculus to build a mathematical case for a third planet using the Carnegie Institution's Systemic dataset.</div></div>
+          <div class="ddph"><div class="phnum">02</div><div class="phyr">Sophomore Year · 2018–2019</div><div class="phtitle">Visual Confirmation</div><div class="phdesc">Using the Aladin sky atlas — a public repository — Ramzi obtained a visual of the suspected exoplanet. Every tool was publicly accessible, proving the discovery could be replicated by anyone with a computer and dedication.</div></div>
+          <div class="ddph"><div class="phnum">03</div><div class="phyr">Junior Year · 2019–2020</div><div class="phtitle">Spectroscopic Analysis</div><div class="phdesc">At Seton Hall University with mentor Dr. Jose Lopez, Ramzi used the university's spectrometer to analyze both the exoplanet and its host star. Dr. Lopez was the first astronomer to formally validate the work.</div></div>
+        </div>
+        <div class="ddtxt"><p><strong>Why HD-92788?</strong> "It's the same size as our sun and the same type of star as our sun, and, as we know, our sun holds eight planets. I thought it was a possibility that because of the type of star it is… it should have more than two exoplanets orbiting it."</p><br><p><strong>The planet</strong> is a gas giant located approximately <strong>113 light-years away</strong> — roughly three times the size of Jupiter. Submitted for NASA confirmation while still in high school, without a university affiliation.</p></div>
+      </div></div>
+    </div>
+    <div class="eyebrow rev" style="margin-top:88px;" id="awards">Awards &amp; Honors</div>
+    <div class="carousel-wrap rev">
+      <div class="carousel"><div class="carousel-track" id="awardsTrack">
+        <div class="ccard"><div class="atitle">Liberty Science Center Genius Gala</div><div class="ayr">2020</div><div class="adesc">One of only 3 high school students in all of New Jersey selected for this title.</div></div>
+        <div class="ccard"><div class="atitle">NJ Governor's STEM Scholars</div><div class="ayr">2020–2021</div><div class="adesc">Selected from over 1,000 applicants by the R&amp;D Council of NJ through rigorous criteria.</div></div>
+        <div class="ccard"><div class="atitle">NASA Earth Systems Science Award</div><div class="ayr">2019 &amp; 2020</div><div class="adesc">Awarded annually by a NASA representative for exceptional astronomical research. Won twice.</div></div>
+        <div class="ccard"><div class="atitle">U.S. Air Force Research Laboratory Award</div><div class="ayr">2019</div><div class="adesc">The Air Force acknowledges 2 students per year at the NJ Regional Science Fair.</div></div>
+        <div class="ccard"><div class="atitle">U.S. Naval Science Award</div><div class="ayr">2019</div><div class="adesc">The Office of Naval Research recognizes 2 students each year for scientific success.</div></div>
+        <div class="ccard"><div class="atitle">Regional ISEF Gold Medal</div><div class="ayr">2018 &amp; 2020</div><div class="adesc">Gold medal at the NJ qualifier for the International Science &amp; Engineering Fair. First freshman in Union City history (2018).</div></div>
+        <div class="ccard"><div class="atitle">Presidential Full Ride Scholarship — NJCU</div><div class="ayr">2017 &amp; 2020</div><div class="adesc">Won a full presidential scholarship twice — first as a freshman, unprecedented in Union City history.</div></div>
+        <div class="ccard"><div class="atitle">ACS Science Fair Top Prize — NJ &amp; NY</div><div class="ayr">2018 &amp; 2019</div><div class="adesc">Top prize at both the NJ and NY American Chemical Society fairs.</div></div>
+        <div class="ccard"><div class="atitle">American Meteorological Society Award</div><div class="ayr">2019</div><div class="adesc">Given to 2 students whose work "should be recognized for its greater purpose."</div></div>
+        <div class="ccard"><div class="atitle">JC Medical Center / RWJ STEM Excellence</div><div class="ayr">2017 &amp; 2020</div><div class="adesc">Awarded for superior scientific research. Won in freshman and junior years.</div></div>
+        <div class="ccard"><div class="atitle">NJIT Real World Connections — 1st Place</div><div class="ayr">2017, 2018 &amp; 2019</div><div class="adesc">First place three consecutive years — the only student to achieve this.</div></div>
+        <div class="ccard"><div class="atitle">Picatinny Arsenal U.S. Army Engineering</div><div class="ayr">2017</div><div class="adesc">1st place at the engineering competition hosted by one of the Army's premier research facilities.</div></div>
+        <div class="ccard"><div class="atitle">Union City Science Fair — 1st Place</div><div class="ayr">2017–2020</div><div class="adesc">Undefeated across four consecutive years, advancing to NJ Regional ISEF each time.</div></div>
+        <div class="ccard"><div class="atitle">J&amp;J Intern Innovation Challenge — 1st Place</div><div class="ayr">2018</div><div class="adesc">Won first place; project showcased at J&amp;J headquarters in New Brunswick.</div></div>
+        <div class="ccard"><div class="atitle">Mock Trial — Hudson County Champions</div><div class="ayr">2018 &amp; 2019</div><div class="adesc">Team President. Won two consecutive championships judged by real courthouse judges.</div></div>
+        <div class="ccard"><div class="atitle">Montclair University Science Symposium — Gold</div><div class="ayr">2018</div><div class="adesc">Gold medal at Montclair State University's annual science competition.</div></div>
+      </div></div>
+      <div class="carousel-nav">
+        <button class="carr-btn" id="awardsP">&#8592;</button>
+        <div class="carousel-dots" id="awardsDots"></div>
+        <button class="carr-btn" id="awardsN">&#8594;</button>
+      </div>
+    </div>
+    <div class="eyebrow rev" style="margin-top:72px;">Speaking &amp; Recognition</div>
+    <div class="carousel-wrap rev">
+      <div class="carousel"><div class="carousel-track" id="speakingTrack">
+        <div class="ccard"><div class="atitle">Keynote — Seton Hall Physics Colloquium</div><div class="ayr">2020</div><div class="adesc">First high school student ever to keynote Seton Hall's bimonthly Physics Department colloquium.</div></div>
+        <div class="ccard"><div class="atitle">Keynote — NJCU Undergraduate Research Institute</div><div class="ayr">2018</div><div class="adesc">Keynote speaker at NJCU's SURI conference as a high school sophomore.</div></div>
+        <div class="ccard"><div class="atitle">Featured — "Disrupting Disruption" · Oxford Univ. Press</div><div class="ayr">2022</div><div class="adesc">Featured on page 43 of David Kirp's nationally recognized study of Union City's school system.</div></div>
+        <div class="ccard"><div class="atitle">Northern NJ Junior Science &amp; Humanities Symposium</div><div class="ayr">2019 &amp; 2020</div><div class="adesc">Selected presenter at the highly selective Rutgers University STEM competition.</div></div>
+        <div class="ccard"><div class="atitle">UCBOE District Meeting — Scientific Excellence</div><div class="ayr">2018 &amp; 2019</div><div class="adesc">First freshman in Union City history to receive the top scientific research award.</div></div>
+      </div></div>
+      <div class="carousel-nav">
+        <button class="carr-btn" id="speakingP">&#8592;</button>
+        <div class="carousel-dots" id="speakingDots"></div>
+        <button class="carr-btn" id="speakingN">&#8594;</button>
+      </div>
+    </div>
+    <div class="eyebrow rev" style="margin-top:72px;" id="press">Press &amp; Media</div>
+    <div class="pgrid rev">
+      <a href="https://www.pix11.com/news/local-news/new-jersey/nj-teen-discovers-new-planet" target="_blank" class="pitem"><div><div class="poutlet">PIX 11 News</div><div class="pdesc">"NJ teen discovers new planet." Live TV feature on the exoplanet discovery.</div></div><div class="pbot"><span class="pyr">2020</span><span class="parr">→</span></div></a>
+      <a href="http://newjersey.news12.com/story/41705991/out-of-this-world-union-city-teen-may-have-discovered-new-planet-outside-solar-system" target="_blank" class="pitem"><div><div class="poutlet">News 12 New Jersey</div><div class="pdesc">"Out of this world: Union City teen may have discovered new planet."</div></div><div class="pbot"><span class="pyr">2020</span><span class="parr">→</span></div></a>
+      <a href="https://mydigitalpublication.com/publication/?m=46265&i=659119&p=20" target="_blank" class="pitem"><div><div class="poutlet">Diversity in Action</div><div class="pdesc">"An Astronomical Discovery" — full feature on Ramzi's research. May/June 2020.</div></div><div class="pbot"><span class="pyr">May/Jun 2020</span><span class="parr">→</span></div></a>
+      <a href="https://www.nj.com/hudson/2020/02/union-city-wiz-kids-discovery-is-out-of-this-world-its-even-out-of-this-solar-system.html" target="_blank" class="pitem"><div><div class="poutlet">NJ.com</div><div class="pdesc">"Union City wiz kid's discovery is out of this world."</div></div><div class="pbot"><span class="pyr">Feb 2020</span><span class="parr">→</span></div></a>
+      <a href="https://drive.google.com/file/d/1eYq0vVEkN9sbu-3xRFWVdpLb-nLcHFvO/view?usp=sharing" target="_blank" class="pitem"><div><div class="poutlet">Fox 5 — Good Morning NY</div><div class="pdesc">Live national television interview on Fox 5's Good Morning New York.</div></div><div class="pbot"><span class="pyr">2020</span><span class="parr">→</span></div></a>
+      <a href="https://wcbs880.radio.com/articles/news/new-jersey-wiz-kid-discovers-exoplanet-125-light-years-away" target="_blank" class="pitem"><div><div class="poutlet">CBS Radio — WCBS 880</div><div class="pdesc">"New Jersey wiz kid discovers exoplanet." National radio broadcast.</div></div><div class="pbot"><span class="pyr">2020</span><span class="parr">→</span></div></a>
+      <a href="https://hudsontv.com/cal-tech-senior-comes-home-to-mentor-jmsa-students-in-astrophysics/" target="_blank" class="pitem"><div><div class="poutlet">Hudson TV News</div><div class="pdesc">Feature on Ramzi returning to Jose Marti STEM Academy to mentor students.</div></div><div class="pbot"><span class="pyr">Jul 2024</span><span class="parr">→</span></div></a>
+      <a href="https://lsc.org/news-and-social/news/LSC-to-honor-three-NJ-students" target="_blank" class="pitem"><div><div class="poutlet">Liberty Science Center</div><div class="pdesc">Official LSC announcement — one of 3 NJ students to receive the Genius Gala title.</div></div><div class="pbot"><span class="pyr">2020</span><span class="parr">→</span></div></a>
+      <a href="https://www.google.com/books/edition/Disrupting_Disruption/-qSIEAAAQBAJ?hl=en&gbpv=1&dq=ramzi+saber&pg=PA43&printsec=frontcover" target="_blank" class="pitem"><div><div class="poutlet">Book — Oxford University Press</div><div class="pdesc">"Disrupting Disruption" by David Kirp. Featured on page 43.</div></div><div class="pbot"><span class="pyr">2022 · Oxford</span><span class="parr">→</span></div></a>
+    </div>
+    <div class="tagsrow rev">
+      <span class="tpill">Python</span><span class="tpill">MATLAB</span><span class="tpill">C++</span><span class="tpill">SQL</span><span class="tpill">R</span><span class="tpill">Java</span><span class="tpill">Django</span><span class="tpill">JavaScript</span><span class="tpill">Excel</span><span class="tpill">Salesforce</span><span class="tpill">Machine Learning</span><span class="tpill">Monte Carlo Simulation</span><span class="tpill">Spectroscopy</span><span class="tpill">Exoplanet Detection</span><span class="tpill">English · Arabic · French · Italian</span>
+    </div>
+  </div>
+</section>
+
+<section class="consec" id="contact">
+  <div class="conin">
+    <div>
+      <div class="eyebrow rev" style="color:rgba(255,255,255,.16);">Contact &amp; Connect</div>
+      <h2 class="conh rev">Let's talk<br><em>universes</em>.</h2>
+      <p class="cons rev">Astrophysics research, data science collaboration, or something entirely new — Ramzi is always looking to climb higher.</p>
+    </div>
+    <div class="clinks rev">
+      <a href="https://www.linkedin.com/in/ramzisaber/" target="_blank" class="clink ccl"><span class="cll">LinkedIn</span><span class="clv">linkedin.com/in/ramzisaber</span></a>
+      <a href="mailto:ramzisaber1@gmail.com" class="clink ccl"><span class="cll">Email</span><span class="clv">ramzisaber1@gmail.com</span></a>
+      <a href="https://ui.adsabs.harvard.edu/search/q=author%3A%22Saber%2C+Ramzi%22" target="_blank" class="clink ccl"><span class="cll">NASA ADS Publications</span><span class="clv">View All Research →</span></a>
+      <div class="clink"><span class="cll">Location</span><span class="clv" style="color:rgba(255,255,255,.38);">Union City, NJ · 07087</span></div>
+      <a href="Curriculum_Vitae__CV_.pdf" target="_blank" class="clink cv-link"><span class="cll">Full Curriculum Vitae</span><span class="clv">Download CV →</span></a>
+      <a href="music.html" class="clink" id="switchToMusic"><span class="cll">Explore the other world</span><span class="clv" style="color:var(--sa);">Enter Studio →</span></a>
+    </div>
+  </div>
+</section>
+<footer><span>© 2026 Ramzi Saber</span><span>Astrophysicist · Data Scientist · Music Producer</span><span><a href="index.html" style="color:inherit;text-decoration:none;opacity:.5;">← Back to Landing</a></span></footer>
+<a href="#top" class="scroll-top" id="scrollTop" aria-label="Back to top">↑</a>
+
+<script>
+const veil=document.getElementById('veil');
+window.addEventListener('load',()=>setTimeout(()=>veil.classList.remove('show'),80));
+function goTo(url,col){veil.style.background=col||'#070810';veil.classList.add('show');setTimeout(()=>window.location.href=url,600);}
+document.getElementById('backBtn').addEventListener('click',e=>{e.preventDefault();goTo('index.html','#070810');});
+document.getElementById('switchStudio').addEventListener('click',e=>{e.preventDefault();goTo('music.html','#0a0906');});
+document.getElementById('switchToMusic').addEventListener('click',e=>{e.preventDefault();goTo('music.html','#0a0906');});
+
+const pb=document.getElementById('progressBar');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  pb.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  const st=document.getElementById('scrollTop');
+  if(st) st.classList.toggle('show', h.scrollTop>500);
+},{passive:true});
+
+const cur=document.getElementById('cur'),ring=document.getElementById('ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+document.querySelectorAll('a,button,.ddh').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hov'));el.addEventListener('mouseleave',()=>ring.classList.remove('hov'));});
+(function animR(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animR);})();
+
+function mkStars(id,n){const c=document.getElementById(id);if(!c)return;for(let i=0;i<n;i++){const s=document.createElement('div');s.className='star';const sz=Math.random()*2+.4;s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--mn:${.1+Math.random()*.3};--mx:${.5+Math.random()*.5};animation-delay:${Math.random()*5}s`;c.appendChild(s);}}
+mkStars('stHero',200);mkStars('stSec',50);
+
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.07});
+document.querySelectorAll('.rev').forEach(r=>obs.observe(r));
+
+const expObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.exp-card').forEach((c,i)=>setTimeout(()=>c.classList.add('vis'),i*80));}});},{threshold:.05});
+const eg=document.querySelector('.exp-grid');if(eg)expObs.observe(eg);
+
+function animCounter(el){const t=parseInt(el.dataset.target),s=el.dataset.suffix||'',dur=1600,steps=60;let i=0;const timer=setInterval(()=>{i++;el.textContent=Math.round(t*(i/steps))+s;if(i>=steps){el.textContent=t+s;clearInterval(timer);}},dur/steps);}
+const cObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('[data-target]').forEach(animCounter);cObs.unobserve(e.target);}});},{threshold:.3});
+const sg=document.querySelector('.sgrid');if(sg)cObs.observe(sg);
+
+const navLinks=document.querySelectorAll('.nav-links a');
+const secs=document.querySelectorAll('section[id]');
+const nObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;navLinks.forEach(a=>a.classList.toggle('active-nav',a.getAttribute('href')==='#'+id));}});},{threshold:.25});
+secs.forEach(s=>nObs.observe(s));
+
+document.getElementById('ddH').addEventListener('click',()=>{document.getElementById('ddB').classList.toggle('open');document.getElementById('ddI').classList.toggle('open');});
+
+function makeCarousel(trackId,dotsId,prevId,nextId,ms){
+  const track=document.getElementById(trackId),dotsEl=document.getElementById(dotsId);
+  const prev=document.getElementById(prevId),next=document.getElementById(nextId);
+  if(!track||!dotsEl)return;
+  const cards=track.querySelectorAll('.ccard'),total=cards.length;
+  function vc(){return window.innerWidth<=768?1:3;}
+  function pg(){return Math.ceil(total/vc());}
+  let cur2=0,timer,startX=0,drag=false;
+  function buildDots(){dotsEl.innerHTML='';for(let i=0;i<pg();i++){const d=document.createElement('button');d.className='cdot'+(i===0?' active':'');d.addEventListener('click',()=>{goTo(i);reset();});dotsEl.appendChild(d);}}
+  function goTo(i){cur2=Math.max(0,Math.min(i,pg()-1));const cw=cards[0].getBoundingClientRect().width+16;track.style.transform=`translateX(-${cur2*cw*vc()}px)`;dotsEl.querySelectorAll('.cdot').forEach((d,j)=>d.classList.toggle('active',j===cur2));if(prev)prev.disabled=cur2===0;if(next)next.disabled=cur2===pg()-1;}
+  function fwd(){goTo(cur2<pg()-1?cur2+1:0);}
+  function bk(){goTo(cur2>0?cur2-1:pg()-1);}
+  function reset(){clearInterval(timer);timer=setInterval(fwd,ms);}
+  if(prev)prev.addEventListener('click',()=>{bk();reset();});
+  if(next)next.addEventListener('click',()=>{fwd();reset();});
+  track.addEventListener('mousedown',e=>{drag=true;startX=e.clientX;clearInterval(timer);});
+  track.addEventListener('mouseup',e=>{if(!drag)return;drag=false;const d=startX-e.clientX;if(Math.abs(d)>40)d>0?fwd():bk();reset();});
+  track.addEventListener('mouseleave',()=>{drag=false;});
+  track.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;clearInterval(timer);},{passive:true});
+  track.addEventListener('touchend',e=>{const d=startX-e.changedTouches[0].clientX;if(Math.abs(d)>40)d>0?fwd():bk();reset();},{passive:true});
+  window.addEventListener('resize',()=>{buildDots();goTo(0);});
+  buildDots();goTo(0);timer=setInterval(fwd,ms);
+}
+makeCarousel('awardsTrack','awardsDots','awardsP','awardsN',3200);
+makeCarousel('speakingTrack','speakingDots','speakingP','speakingN',3500);
+</script>
+</body>
+</html>

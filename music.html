@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramzi Saber — Music</title>
+<meta name="description" content="Ramzi Saber music portfolio — production, guitar, releases, visuals, and live performance.">
+<meta name="theme-color" content="#07060a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="rs-shared.css">
+<style>
+:root{--ink:#07060a;--ink2:#0e0c14;--ink3:#15121f;--gold:var(--sa);--text-dim:#7a7080;--text-mid:#b0a8b8;--text-bright:#ece8f4;}
+body{background:var(--ink);cursor:none;}
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--gold);z-index:200;width:0%;pointer-events:none;}
+nav{background:rgba(7,6,10,.92);}
+
+/* ── AMBIENT BACKGROUND ── */
+.bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.bg-orb{position:absolute;border-radius:50%;filter:blur(130px);animation:drift var(--t,40s) ease-in-out infinite alternate;}
+.bg-orb-1{width:700px;height:700px;background:rgba(90,30,140,.16);top:-200px;left:-150px;--t:45s;}
+.bg-orb-2{width:500px;height:500px;background:rgba(212,160,48,.07);bottom:-100px;right:-100px;--t:35s;animation-delay:-15s;}
+.bg-orb-3{width:400px;height:400px;background:rgba(50,15,90,.12);top:40%;left:40%;--t:55s;animation-delay:-25s;}
+@keyframes drift{0%{transform:translate(0,0);}33%{transform:translate(40px,-30px);}66%{transform:translate(-20px,50px);}100%{transform:translate(30px,20px);}}
+.bg-lines{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.bg-line{position:absolute;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(212,160,48,.04) 20%,rgba(212,160,48,.04) 80%,transparent);animation:linepulse var(--lp,8s) ease-in-out infinite;}
+@keyframes linepulse{0%,100%{opacity:0;}50%{opacity:1;}}
+.bg-notes{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg-note{position:absolute;font-size:var(--ns,12px);color:rgba(212,160,48,.055);animation:floatnote var(--nt,20s) linear infinite;font-family:'Cormorant Garamond',serif;font-style:italic;user-select:none;}
+@keyframes floatnote{0%{transform:translateY(100vh) rotate(0deg);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-80px) rotate(20deg);opacity:0;}}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.38;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:150px 150px;mix-blend-mode:overlay;}
+.spotlight{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle, rgba(212,160,48,.12), transparent 60%);filter:blur(20px);transform:translate(-50%,-50%);opacity:.55;}
+
+/* ── HERO ── */
+.music-hero{height:100vh;position:relative;display:flex;align-items:flex-end;overflow:hidden;z-index:2;}
+.hero-grad{position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(7,6,10,1) 45%,rgba(7,6,10,.4) 75%,rgba(7,6,10,.7) 100%);}
+.hero-grad-bottom{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(7,6,10,1) 0%,transparent 35%);}
+
+/* ── VINYL SYSTEM (mirrors orbit rings on science page) ── */
+.vinyl-system{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:520px;height:520px;z-index:2;}
+/* Outer orbit rings — like the science page */
+.vring{position:absolute;top:50%;left:50%;border-radius:50%;border:1px solid;transform:translate(-50%,-50%);animation:vspin var(--vt,30s) linear infinite;}
+.vring-1{width:520px;height:520px;border-color:rgba(212,160,48,.07);--vt:80s;}
+.vring-2{width:430px;height:430px;border-color:rgba(212,160,48,.05);--vt:60s;animation-direction:reverse;}
+/* Orbit dot — like the science page planet */
+.vring-1::before{content:'';position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:.6;box-shadow:0 0 10px var(--gold);}
+.vring-2::before{content:'';position:absolute;bottom:-3px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:rgba(212,160,48,.5);box-shadow:0 0 8px rgba(212,160,48,.4);}
+/* Vinyl disc */
+.vinyl-disc{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:320px;height:320px;border-radius:50%;animation:vspin 14s linear infinite;}
+/* Grooves */
+.vinyl-grooves{position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle at center,#0e0b06 0px,#0e0b06 4px,#141008 4px,#141008 7px,#0e0b06 7px,#0e0b06 9px,#1a1509 9px,#1a1509 11px);}
+/* Label */
+.vinyl-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,#1a1206 0%,#2a1e0a 30%,#d4a030 32%,#b88820 36%,#0e0b06 37%,#0e0b06 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;}
+.vinyl-label-text{font-family:'Syne',sans-serif;font-size:5.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(212,160,48,.7);text-align:center;line-height:1.4;}
+/* Spindle hole */
+.vinyl-hole{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#07060a;}
+/* Shine */
+.vinyl-shine{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 20deg,transparent 0deg,rgba(255,255,255,.03) 30deg,transparent 60deg,transparent 180deg,rgba(255,255,255,.02) 210deg,transparent 240deg);pointer-events:none;}
+@keyframes vspin{from{transform:translate(-50%,-50%) rotate(0deg);}to{transform:translate(-50%,-50%) rotate(360deg);}}
+
+/* ── HERO CONTENT ── */
+.hero-content{position:relative;z-index:3;padding:0 80px 90px;max-width:640px;}
+
+/* Minimal tonearm */
+.tonearm{position:absolute;top:50%;left:50%;z-index:10;transform-origin:0 0;transform:translate(105px,-195px) rotate(-32deg);animation:tonearm-drift 7s ease-in-out infinite alternate;pointer-events:none;}
+.tonearm-pivot{width:16px;height:16px;border-radius:50%;background:rgba(212,160,48,.2);border:1px solid rgba(212,160,48,.45);position:absolute;top:0;left:0;transform:translate(-50%,-50%);}
+.tonearm-pivot::after{content:'';width:6px;height:6px;border-radius:50%;background:rgba(212,160,48,.75);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);box-shadow:0 0 6px rgba(212,160,48,.4);}
+.tonearm-shaft{width:1.5px;height:150px;background:linear-gradient(to bottom,rgba(212,160,48,.6),rgba(212,160,48,.2));position:absolute;top:0;left:0;transform-origin:top center;}
+.tonearm-head{position:absolute;bottom:-10px;left:-5px;width:10px;height:10px;border-radius:50%;background:rgba(212,160,48,.55);box-shadow:0 0 10px rgba(212,160,48,.35);}
+@keyframes tonearm-drift{0%{transform:translate(105px,-195px) rotate(-32deg);}100%{transform:translate(105px,-195px) rotate(-27deg);}}
+
+.hero-tag{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:22px;display:flex;align-items:center;gap:12px;}
+.hero-tag::before{content:'';width:28px;height:1px;background:var(--gold);opacity:.45;}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(62px,9vw,118px);font-weight:300;line-height:.9;color:var(--text-bright);margin-bottom:28px;letter-spacing:-.02em;}
+.hero-h1 em{font-style:italic;color:rgba(255,255,255,.22);}
+.hero-desc{font-size:11px;letter-spacing:.12em;line-height:1.9;color:var(--text-dim);max-width:400px;margin-bottom:44px;}
+.hero-desc strong{color:var(--text-mid);font-weight:400;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding:14px 26px;background:var(--gold);color:#0a0906;font-weight:600;transition:all .3s;cursor:none;}
+.btn-primary:hover{background:#e0b030;transform:translateY(-1px);}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding:14px 26px;border:1px solid rgba(255,255,255,.1);color:var(--text-mid);transition:all .3s;cursor:none;}
+.btn-ghost:hover{border-color:rgba(255,255,255,.28);color:var(--text-bright);}
+.ep-badge{position:absolute;top:130px;right:80px;z-index:3;border:1px solid rgba(212,160,48,.2);background:rgba(7,6,10,.75);backdrop-filter:blur(12px);padding:18px 24px;max-width:210px;}
+.ep-badge-eyebrow{font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;opacity:.65;}
+.ep-badge-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:var(--text-bright);line-height:1.3;margin-bottom:6px;}
+.ep-badge-date{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dim);}
+.ep-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--gold);margin-right:6px;animation:bd 1.5s ease-in-out infinite;vertical-align:middle;}
+@keyframes bd{0%,100%{opacity:1;}50%{opacity:.3;}}
+.hero-scroll{position:absolute;left:80px;bottom:48px;z-index:3;display:flex;align-items:center;gap:10px;}
+.hero-scroll span{font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.15);}
+.scroll-l{width:38px;height:1px;background:linear-gradient(to right,rgba(255,255,255,.15),transparent);animation:sl2 2s ease-in-out infinite;}
+@keyframes sl2{0%,100%{opacity:.3;}50%{opacity:1;}}
+
+
+.scroll-top{position:fixed;right:24px;bottom:24px;z-index:120;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(212,160,48,.22);background:rgba(7,6,10,.7);backdrop-filter:blur(12px);color:var(--gold);text-decoration:none;opacity:0;transform:translateY(12px);pointer-events:none;transition:all .3s;}
+.scroll-top.show{opacity:1;transform:translateY(0);pointer-events:auto;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;}
+.hero-pill{font-size:8px;letter-spacing:.16em;text-transform:uppercase;padding:8px 12px;border:1px solid rgba(212,160,48,.18);background:rgba(212,160,48,.07);color:rgba(240,212,144,.84);}
+.section-lead{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.3);margin:-34px 0 34px;}
+.story-stat{position:relative;overflow:hidden;}
+.story-stat::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(to right, transparent, rgba(212,160,48,.22), transparent);}
+.release-item,.social-card,.work-card,.genre-card,.story-stat,.mlink{box-shadow:0 0 0 rgba(0,0,0,0);transition:background .25s, transform .25s, box-shadow .25s;}
+.release-item:hover,.social-card:hover,.work-card:hover,.genre-card:hover,.mlink:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.18);}
+@media(max-width:768px){.scroll-top{right:16px;bottom:16px;width:42px;height:42px;}.hero-pills{margin-bottom:18px;}}
+
+/* ── SECTIONS ── */
+.msec{position:relative;z-index:2;padding:120px 0;border-top:1px solid rgba(255,255,255,.04);}
+.mi{max-width:1200px;margin:0 auto;padding:0 72px;}
+.meyebrow{font-size:13px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;margin-bottom:40px;display:flex;align-items:center;gap:18px;color:var(--gold);}
+.meyebrow::after{content:'';flex:1;height:1px;background:var(--gold);opacity:.12;}
+.msh{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,72px);font-weight:300;line-height:1.05;margin-bottom:64px;color:var(--text-bright);}
+.msh em{font-style:italic;opacity:.35;}
+
+/* ── TRAILER SECTION ── */
+.trailer-wrap{position:relative;width:100%;aspect-ratio:16/9;border:1px solid rgba(212,160,48,.14);overflow:hidden;background:#000;}
+.trailer-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+.trailer-wrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000;}
+.trailer-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-dim);margin-top:16px;text-align:center;}
+.trailer-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:32px;background:radial-gradient(circle at top,rgba(212,160,48,.09),rgba(7,6,10,.96) 65%);text-align:center;}
+.trailer-fallback.show{display:flex;}
+.trailer-fallback-inner{max-width:520px;}
+.trailer-fallback-tag{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:12px;}
+.trailer-fallback-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;line-height:1.05;color:var(--text-bright);margin-bottom:12px;}
+.trailer-fallback-copy{font-size:10px;letter-spacing:.08em;line-height:1.9;color:var(--text-dim);margin-bottom:20px;}
+.trailer-fallback-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+/* Story */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.story-text{font-size:13px;line-height:2.15;color:var(--text-dim);}
+.story-text p+p{margin-top:18px;}
+.story-text strong{color:var(--text-mid);font-weight:400;}
+.story-text em{color:var(--gold);font-style:normal;}
+.story-aside{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);}
+.story-stat{padding:24px 26px;background:var(--ink2);}
+.story-stat-num{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:5px;}
+.story-stat-lbl{font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);}
+
+/* Genres */
+.genre-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);}
+.genre-card{padding:32px 28px;background:var(--ink2);position:relative;overflow:hidden;transition:background .3s;}
+.genre-card:hover{background:var(--ink3);}
+.genre-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--gold);transition:height .4s var(--ease);}
+.genre-card:hover::before{height:100%;}
+.genre-name{font-family:'Syne',sans-serif;font-size:13.5px;font-weight:600;color:var(--text-bright);margin-bottom:8px;}
+.genre-desc{font-size:10px;line-height:1.75;color:var(--text-dim);}
+.vibe-words{display:flex;gap:0;margin-bottom:52px;}
+.vibe-word{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,56px);font-weight:300;line-height:1;padding-right:28px;color:var(--text-bright);}
+.vibe-word+.vibe-word{border-left:1px solid rgba(255,255,255,.08);padding-left:28px;}
+.vibe-word:nth-child(2){opacity:.5;font-style:italic;}
+.vibe-word:nth-child(3){opacity:.25;}
+.influences-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.inf-pill{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;padding:8px 16px;border:1px solid rgba(255,255,255,.08);color:var(--text-dim);transition:all .25s;}
+.inf-pill:hover{border-color:rgba(212,160,48,.3);color:var(--gold);}
+
+/* Releases */
+.releases-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;}
+.releases-eyebrow{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dim);}
+.releases-link{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;opacity:.7;transition:opacity .2s;cursor:none;}
+.releases-link:hover{opacity:1;}
+.release-list{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);margin-bottom:28px;}
+.release-item{display:grid;grid-template-columns:60px 1fr auto;gap:20px;align-items:center;padding:24px 26px;background:var(--ink2);text-decoration:none;transition:background .25s;cursor:none;}
+.release-item:hover{background:var(--ink3);}
+.release-num{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:rgba(212,160,48,.2);line-height:1;}
+.release-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:600;color:var(--text-bright);margin-bottom:4px;}
+.release-meta{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);}
+.release-arrow{font-size:12px;color:var(--gold);opacity:.4;transition:opacity .25s,transform .25s;}
+.release-item:hover .release-arrow{opacity:1;transform:translateX(4px);}
+.ep-card{border:1px solid rgba(212,160,48,.16);background:linear-gradient(135deg,rgba(212,160,48,.05) 0%,transparent 60%);padding:36px 32px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;}
+.ep-card-tag{font-size:8.5px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;opacity:.7;}
+.ep-card-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--text-bright);margin-bottom:6px;}
+.ep-card-sub{font-size:10px;letter-spacing:.1em;color:var(--text-dim);line-height:1.7;}
+.ep-card-date-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--gold);line-height:1;}
+.ep-card-date-lbl{font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dim);text-align:right;}
+
+/* Work */
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);}
+.work-card{padding:30px 28px;background:var(--ink2);transition:background .25s;}
+.work-card:hover{background:var(--ink3);}
+.work-card-tag{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:8px;}
+.work-card-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:600;color:var(--text-bright);margin-bottom:6px;}
+.work-card-desc{font-size:10.5px;line-height:1.75;color:var(--text-dim);}
+
+/* Social */
+.social-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);}
+.social-card{padding:28px 24px;background:var(--ink2);text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:background .25s;cursor:none;}
+.social-card:hover{background:var(--ink3);}
+.social-icon{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.6;}
+.social-handle{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:var(--text-bright);}
+.social-desc{font-size:9.5px;line-height:1.6;color:var(--text-dim);}
+.social-arrow{font-size:10px;color:var(--gold);opacity:.3;margin-top:auto;transition:opacity .2s,transform .2s;}
+.social-card:hover .social-arrow{opacity:.8;transform:translateX(4px);}
+
+/* Contact */
+.mcontact{position:relative;z-index:2;padding:120px 0;border-top:1px solid rgba(255,255,255,.05);}
+.mcontact-inner{max-width:1200px;margin:0 auto;padding:0 72px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.mcontact-h{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4.5vw,60px);font-weight:300;color:var(--text-bright);line-height:1.1;margin-bottom:16px;}
+.mcontact-sub{font-size:10.5px;letter-spacing:.08em;color:var(--text-dim);line-height:2;}
+.mlinks{display:flex;flex-direction:column;gap:1px;}
+.mlink{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border:1px solid rgba(255,255,255,.05);text-decoration:none;transition:all .3s;background:rgba(255,255,255,.02);cursor:none;}
+.mlink:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);}
+.mlink-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.28);}
+.mlink-val{font-size:10.5px;color:var(--gold);letter-spacing:.04em;}
+.mlink.switch-link .mlink-val{color:var(--ca);}
+footer{position:relative;z-index:2;padding:34px 72px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.04);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.12);}
+.rev{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease;}
+.rev.vis{opacity:1;transform:translateY(0);}
+
+.lyric-band{position:relative;z-index:2;margin-top:-1px;}
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);}
+.process-card{padding:28px 24px;background:var(--ink2);}
+.process-step{font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);opacity:.65;margin-bottom:8px;}
+.process-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:var(--text-bright);margin-bottom:8px;}
+.process-desc{font-size:10px;line-height:1.8;color:var(--text-dim);}
+.quote-panel{padding:30px 32px;border:1px solid rgba(212,160,48,.12);background:linear-gradient(135deg,rgba(212,160,48,.06),transparent 70%);font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1.15;color:var(--text-bright);}
+.quote-panel span{display:block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-top:14px;}
+@media(max-width:768px){
+  .music-hero{align-items:flex-end;padding-top:0;}
+  .spotlight{display:none;}
+  .process-grid{grid-template-columns:1fr;}
+  .hero-content{padding:0 28px 60px;max-width:100%;}
+  .vinyl-system{right:-120px;top:auto;bottom:30px;width:320px;height:320px;transform:none;opacity:.35;}
+  .vring-1{width:320px;height:320px;}
+  .vring-2{width:265px;height:265px;}
+  .vinyl-disc{width:200px;height:200px;}
+  .ep-badge,.hero-scroll{display:none;}
+  .story-grid,.work-grid,.mcontact-inner{grid-template-columns:1fr;gap:40px;}
+  .genre-grid{grid-template-columns:1fr;}
+  .social-grid{grid-template-columns:1fr 1fr;}
+  .mi,.mcontact-inner{padding:0 26px;}
+  footer{flex-direction:column;gap:8px;text-align:center;padding:28px 26px;}
+  .vibe-words{flex-direction:column;gap:8px;}
+  .vibe-word+.vibe-word{border-left:none;padding-left:0;border-top:1px solid rgba(255,255,255,.08);padding-top:8px;}
+  .ep-card{grid-template-columns:1fr;}
+  body{cursor:auto;}.cursor,.cursor-ring{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-canvas">
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+</div>
+<div class="bg-lines" id="bgLines"></div>
+<div class="bg-notes" id="bgNotes"></div>
+<div class="grain"></div>
+<div class="spotlight" id="spotlight"></div>
+
+<div class="page-veil" id="veil"></div>
+<div class="progress-bar" id="progressBar"></div>
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="ring"></div>
+
+<nav>
+  <a href="index.html" class="nav-back studio-back" id="backBtn">← All Worlds</a>
+  <ul class="nav-links">
+    <li><a href="#sound" class="sn">Sound</a></li>
+    <li><a href="#music" class="sn">Music</a></li>
+    <li><a href="#work" class="sn">Work</a></li>
+    <li><a href="#connect" class="sn">Connect</a></li>
+  </ul>
+  <a href="science.html" class="world-switch switch-to-cosmos" id="switchScience">Enter Universe →</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="music-hero" id="top">
+  <div class="hero-grad"></div>
+  <div class="hero-grad-bottom"></div>
+
+  <!-- Vinyl system — mirrors the orbit rings on science page -->
+  <div class="vinyl-system">
+    <div class="vring vring-1"></div>
+    <div class="vring vring-2"></div>
+    <div class="vinyl-disc">
+      <div class="vinyl-grooves"></div>
+      <div class="vinyl-label">
+        <div class="vinyl-label-text">RAMZI<br>SABER</div>
+      </div>
+      <div class="vinyl-hole"></div>
+      <div class="vinyl-shine"></div>
+    </div>
+    <!-- Tonearm — sits outside disc so it doesn't spin -->
+    <div class="tonearm">
+      <div class="tonearm-pivot"></div>
+      <div class="tonearm-shaft"></div>
+      <div class="tonearm-head"></div>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-tag">02 — Music Production &amp; Instrumentation</div>
+    <h1 class="hero-h1">Sound<br>&amp; <em>Soul</em></h1>
+    <div class="hero-pills" aria-hidden="true"><span class="hero-pill">Producer</span><span class="hero-pill">Guitarist</span><span class="hero-pill">Composer</span><span class="hero-pill">Live Performer</span></div>
+    <p class="hero-desc">
+      <strong>13 years of guitar.</strong> Shoegaze, post-rock, metalcore, indie, dream-pop.<br>
+      Producer · Guitarist · Songwriter.
+    </p>
+    <div class="hero-actions">
+      <a href="https://open.spotify.com/artist/1OUuBtCM1xAnib7kuSveg5" target="_blank" class="btn-primary">Listen on Spotify</a>
+      <a href="#sound" class="btn-ghost">Explore ↓</a>
+    </div>
+  </div>
+
+  <div class="ep-badge">
+    <div class="ep-badge-eyebrow"><span class="ep-dot"></span>Upcoming</div>
+    <div class="ep-badge-title">Debut EP</div>
+    <div class="ep-badge-date">April 24, 2025</div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-l"></div>
+    <span>Scroll</span>
+  </div>
+</div>
+<div class="lyric-band marquee"><div class="marquee-track">
+  <span class="marquee-item">shoegaze textures</span><span class="marquee-item">cinematic guitar</span><span class="marquee-item">live performance</span><span class="marquee-item">sound design</span><span class="marquee-item">distortion and atmosphere</span><span class="marquee-item">shoegaze textures</span><span class="marquee-item">cinematic guitar</span><span class="marquee-item">live performance</span><span class="marquee-item">sound design</span><span class="marquee-item">distortion and atmosphere</span>
+</div></div>
+
+<!-- ══ STORY ══ -->
+<section class="msec" id="sound">
+  <div class="mi">
+    <div class="meyebrow rev">The Story</div>
+    <div class="section-lead rev">Built for mood, weight, atmosphere, and melody.</div>
+    <h2 class="msh rev">Where the noise<br><em>keeps me whole</em></h2>
+    <div class="story-grid rev">
+      <div class="story-text">
+        <p>Music did not arrive as a hobby. It arrived as a language. Growing up between pressure, ambition, dislocation, and the need to prove himself, Ramzi picked up a guitar at 10 years old and turned sound into a place to live.</p>
+        <p><strong>Thirteen years later</strong>, his sound sits between shoegaze haze, heavy guitars, and cinematic textures.</p>
+        <p>The same mind that writes code, builds systems, and studies the sky stays up until 4am sculpting <strong>guitar tones</strong>, layering synths, engineering drum tracks, and chasing the exact emotional temperature of a song. Two worlds. One signal.</p>
+        <p><strong>"It's both a complement and an escape."</strong> Science asks Ramzi to understand the universe. Music asks him to bleed into it.</p>
+      </div>
+      <div>
+        <div class="story-aside">
+          <div class="story-stat"><div class="story-stat-num">13</div><div class="story-stat-lbl">Years playing guitar</div></div>
+          <div class="story-stat"><div class="story-stat-num">Apr 24</div><div class="story-stat-lbl">Debut EP release</div></div>
+          <div class="story-stat"><div class="story-stat-num">5+</div><div class="story-stat-lbl">Instruments played</div></div>
+          <div class="story-stat"><div class="story-stat-num">2</div><div class="story-stat-lbl">Published releases</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOUND ══ -->
+<section class="msec">
+  <div class="mi">
+    <div class="meyebrow rev">The Sound</div>
+    <div class="vibe-words rev">
+      <span class="vibe-word">Ethereal</span>
+      <span class="vibe-word">Heavy</span>
+    </div>
+    <div class="genre-grid rev">
+      <div class="genre-card"><div class="genre-name">Shoegaze &amp; Dreamcore</div><div class="genre-desc">Reverb-heavy guitars and blurred atmosphere.</div></div>
+      <div class="genre-card"><div class="genre-name">Metal &amp; Metalcore</div><div class="genre-desc">Heavy riffs with precision and weight.</div></div>
+      <div class="genre-card"><div class="genre-name">Cinematic &amp; Instrumental</div><div class="genre-desc">Wide, cinematic instrumentals built around mood.</div></div>
+      <div class="genre-card"><div class="genre-name">Indie &amp; Slowcore</div><div class="genre-desc">Slow-burning songs with space, restraint, and feeling.</div></div>
+      <div class="genre-card"><div class="genre-name">Production &amp; Tone Craft</div><div class="genre-desc">Full arrangements built from guitar, synth, bass, and drums.</div></div>
+      <div class="genre-card"><div class="genre-name">Rock &amp; Alternative</div><div class="genre-desc">Alternative and rock instincts shaped by years of playing.</div></div>
+    </div>
+    <div style="margin-top:52px;" class="rev">
+      <div class="meyebrow" style="margin-bottom:20px;">Influences</div>
+      <div class="influences-row">
+        <span class="inf-pill">Loathe</span><span class="inf-pill">Deftones</span><span class="inf-pill">Slowdive</span><span class="inf-pill">Daughter</span><span class="inf-pill">Ethel Cain</span><span class="inf-pill">Sleep Token</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MUSIC / RELEASES ══ -->
+<section class="msec" id="music">
+  <div class="mi">
+    <div class="meyebrow rev">Music</div>
+    <h2 class="msh rev">What's out<br><em>right now</em></h2>
+
+    <!-- EP TRAILER -->
+    <div class="rev" style="margin-bottom:48px;">
+      <div class="meyebrow" style="margin-bottom:20px;">EP Trailer</div>
+      <div class="trailer-wrap">
+        <video id="epTrailer" controls preload="metadata" playsinline poster="">
+          <source src="Project_Doxa.mp4" type="video/mp4">
+        </video>
+        <div class="trailer-fallback" id="trailerFallback">
+          <div class="trailer-fallback-inner">
+            <div class="trailer-fallback-tag">EP Trailer</div>
+            <div class="trailer-fallback-title">Trailer currently offline</div>
+            <p class="trailer-fallback-copy">The embedded MP4 was not included with the site files, so I swapped the broken player for a clean fallback card whenever the video file is missing.</p>
+            <div class="trailer-fallback-actions">
+              <a href="https://ramzisaber.loop.fans" target="_blank" class="btn-primary">Hear the music</a>
+              <a href="https://open.spotify.com/artist/1OUuBtCM1xAnib7kuSveg5" target="_blank" class="btn-ghost">Open Spotify</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="trailer-label">Filmed, edited &amp; recorded by Ramzi Saber &nbsp;·&nbsp; Debut EP</p>
+    </div>
+
+    <div class="releases-header rev">
+      <span class="releases-eyebrow">Published Releases</span>
+      <a href="https://ramzisaber.loop.fans" target="_blank" class="releases-link">All platforms →</a>
+    </div>
+    <div class="release-list rev">
+      <a href="https://open.spotify.com/artist/1OUuBtCM1xAnib7kuSveg5" target="_blank" class="release-item">
+        <div class="release-num">01</div>
+        <div class="release-info"><div class="release-title">Betrayal's Interlude</div><div class="release-meta">Cinematic · Instrumental · All Platforms</div></div>
+        <span class="release-arrow">→</span>
+      </a>
+      <a href="https://open.spotify.com/artist/1OUuBtCM1xAnib7kuSveg5" target="_blank" class="release-item">
+        <div class="release-num">02</div>
+        <div class="release-info"><div class="release-title">Eudaemonia</div><div class="release-meta">Cinematic · Instrumental · All Platforms</div></div>
+        <span class="release-arrow">→</span>
+      </a>
+    </div>
+    <div class="ep-card rev">
+      <div>
+        <div class="ep-card-tag"><span class="ep-dot"></span>&nbsp;Coming Soon</div>
+        <div class="ep-card-title">Debut EP — Ramzi Saber</div>
+        <div class="ep-card-sub">Shoegaze · Indie · Slowcore · Vocals<br>The full sound. The first words. Built over years — released April 24.</div>
+      </div>
+      <div>
+        <div class="ep-card-date-num">24</div>
+        <div class="ep-card-date-lbl">April 2025</div>
+      </div>
+    </div>
+    <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;" class="rev">
+      <a href="https://open.spotify.com/artist/1OUuBtCM1xAnib7kuSveg5" target="_blank" class="btn-primary">Spotify</a>
+      <a href="https://music.apple.com/us/artist/ramzi-saber/1821698640" target="_blank" class="btn-ghost">Apple Music</a>
+      <a href="https://ramzisaber.loop.fans" target="_blank" class="btn-ghost">All Platforms</a>
+    </div>
+  </div>
+</section>
+
+<section class="msec">
+  <div class="mi">
+    <div class="meyebrow rev">Creative Process</div>
+    <h2 class="msh rev">From idea to
+<em>impact</em></h2>
+    <div class="process-grid rev">
+      <div class="process-card"><div class="process-step">01 — Capture</div><div class="process-title">Find the emotional center</div><div class="process-desc">Most tracks begin with a guitar texture, a melodic fragment, or a mood. The goal is not just a riff. It is a scene.</div></div>
+      <div class="process-card"><div class="process-step">02 — Build</div><div class="process-title">Layer space around it</div><div class="process-desc">Bass, synths, drums, ambient noise, vocal stacks, and transitions get shaped until the track feels physical instead of merely recorded.</div></div>
+      <div class="process-card"><div class="process-step">03 — Release</div><div class="process-title">Make it cinematic</div><div class="process-desc">The final stage is worldbuilding: visuals, teaser edits, live translation, and a finish that feels like a memory you can replay.</div></div>
+    </div>
+    <div class="quote-panel rev" style="margin-top:28px;">"I don't just want songs to sound good. I want them to feel like weather."<span>Ramzi Saber · artistic direction</span></div>
+  </div>
+</section>
+
+<!-- ══ WORK ══ -->
+<section class="msec" id="work">
+  <div class="mi">
+    <div class="meyebrow rev">Work &amp; Collaborations</div>
+    <h2 class="msh rev">Built with<br><em>others</em></h2>
+    <div class="work-grid rev">
+      <div class="work-card"><div class="work-card-tag">Current · Guitarist</div><div class="work-card-title">Grace Blue</div><div class="work-card-desc">Ramzi is the guitarist for Grace Blue — a rising star whose music is building serious momentum. He's on stage and in the studio, shaping her sound from the inside.</div></div>
+      <div class="work-card"><div class="work-card-tag">Cover Band · Lead Guitarist</div><div class="work-card-title">Deftones Cover Band</div><div class="work-card-desc">Channeling the emotional precision of Chino Moreno and Stephen Carpenter's defining sound. The Deftones aren't just an influence — they're a practice ground.</div></div>
+      <div class="work-card"><div class="work-card-tag">Connections · Rock &amp; Metal</div><div class="work-card-title">Machine Gun Kelly &amp; Travis Barker</div><div class="work-card-desc">Connected with MGK, Travis Barker, and a growing network of up-and-coming artists in the rock and metal scene. The work is happening.</div></div>
+      <div class="work-card"><div class="work-card-tag">Services · Production &amp; Guitar</div><div class="work-card-title">Artist Collaborations</div><div class="work-card-desc">Ramzi produces for other artists and takes on guitarist roles across genres. His ear for tone and ability to work across metalcore, shoegaze, indie, and cinematic makes him a versatile collaborator.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONNECT ══ -->
+<section class="msec" id="connect">
+  <div class="mi">
+    <div class="meyebrow rev">Connect</div>
+    <h2 class="msh rev">Find the<br><em>sound</em></h2>
+    <div class="social-grid rev">
+      <a href="https://www.instagram.com/r.am.zi/" target="_blank" class="social-card"><div class="social-icon">Instagram</div><div class="social-handle">@r.am.zi</div><div class="social-desc">Studio sessions, live clips, behind the scenes. The raw day-to-day of building something.</div><div class="social-arrow">→</div></a>
+      <a href="https://www.tiktok.com/@ramzisaber7" target="_blank" class="social-card"><div class="social-icon">TikTok</div><div class="social-handle">@ramzisaber7</div><div class="social-desc">Short-form content, tones, riffs, and moments from the music world.</div><div class="social-arrow">→</div></a>
+      <a href="https://open.spotify.com/artist/1OUuBtCM1xAnib7kuSveg5" target="_blank" class="social-card"><div class="social-icon">Spotify</div><div class="social-handle">Ramzi Saber</div><div class="social-desc">Stream Betrayal's Interlude, Eudaemonia, and the upcoming debut EP.</div><div class="social-arrow">→</div></a>
+      <a href="https://music.apple.com/us/artist/ramzi-saber/1821698640" target="_blank" class="social-card"><div class="social-icon">Apple Music</div><div class="social-handle">Ramzi Saber</div><div class="social-desc">All releases available on Apple Music.</div><div class="social-arrow">→</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<div class="mcontact">
+  <div class="mcontact-inner">
+    <div>
+      <div class="meyebrow rev" style="color:rgba(255,255,255,.16);">Get in Touch</div>
+      <h2 class="mcontact-h rev">Let's make<br><em>something real</em>.</h2>
+      <p class="mcontact-sub rev">Whether you want to collaborate, book Ramzi for a session, or just talk music — the door is open.</p>
+    </div>
+    <div class="mlinks rev">
+      <a href="mailto:ramzisaber1@gmail.com" class="mlink"><span class="mlink-lbl">Email</span><span class="mlink-val">ramzisaber1@gmail.com</span></a>
+      <a href="https://www.instagram.com/r.am.zi/" target="_blank" class="mlink"><span class="mlink-lbl">Instagram</span><span class="mlink-val">@r.am.zi</span></a>
+      <a href="https://open.spotify.com/artist/1OUuBtCM1xAnib7kuSveg5" target="_blank" class="mlink"><span class="mlink-lbl">Spotify</span><span class="mlink-val">Ramzi Saber →</span></a>
+      <a href="https://music.apple.com/us/artist/ramzi-saber/1821698640" target="_blank" class="mlink"><span class="mlink-lbl">Apple Music</span><span class="mlink-val">Ramzi Saber →</span></a>
+      <a href="https://ramzisaber.loop.fans" target="_blank" class="mlink"><span class="mlink-lbl">All Platforms</span><span class="mlink-val">ramzisaber.loop.fans</span></a>
+      <a href="science.html" class="mlink switch-link" id="toScience"><span class="mlink-lbl">Other world</span><span class="mlink-val">Explore the Science →</span></a>
+    </div>
+  </div>
+</div>
+<footer>
+  <span>© 2026 Ramzi Saber</span>
+  <span>Guitarist · Producer · Multi-Instrumentalist</span>
+  <span><a href="index.html" style="color:inherit;text-decoration:none;opacity:.5;">← Back to Landing</a></span>
+</footer>
+<a href="#top" class="scroll-top" id="scrollTop" aria-label="Back to top">↑</a>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+const trailer=document.getElementById('epTrailer');
+const trailerFallback=document.getElementById('trailerFallback');
+if(trailer&&trailerFallback){
+  const showTrailerFallback=()=>{trailer.style.display='none';trailerFallback.classList.add('show');};
+  trailer.addEventListener('error',showTrailerFallback);
+  const source=trailer.querySelector('source');
+  if(source){
+    source.addEventListener('error',showTrailerFallback);
+  }
+  trailer.addEventListener('loadeddata',()=>{trailerFallback.classList.remove('show');trailer.style.display='block';},{once:true});
+}
+</script><script>
+const veil=document.getElementById('veil');
+window.addEventListener('load',()=>setTimeout(()=>veil.classList.remove('show'),80));
+function goTo(url,col){veil.style.background=col||'#07060a';veil.classList.add('show');setTimeout(()=>window.location.href=url,600);}
+document.getElementById('backBtn').addEventListener('click',e=>{e.preventDefault();goTo('index.html','#07060a');});
+document.getElementById('switchScience').addEventListener('click',e=>{e.preventDefault();goTo('science.html','#05060f');});
+document.getElementById('toScience').addEventListener('click',e=>{e.preventDefault();goTo('science.html','#05060f');});
+const pb=document.getElementById('progressBar');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  pb.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  const st=document.getElementById('scrollTop');
+  if(st) st.classList.toggle('show', h.scrollTop>500);
+},{passive:true});
+const cur=document.getElementById('cur'),ring=document.getElementById('ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hov'));el.addEventListener('mouseleave',()=>ring.classList.remove('hov'));});
+(function animR(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animR);})();
+const bl=document.getElementById('bgLines');
+[8,17,26,38,51,63,74,82,91].forEach((p,i)=>{const l=document.createElement('div');l.className='bg-line';l.style.cssText=`top:${p}%;--lp:${7+Math.random()*5}s;animation-delay:${i*1.1}s;`;bl.appendChild(l);});
+const bn=document.getElementById('bgNotes');
+['♩','♪','♫','♬','𝄞','𝄢'].forEach((sym,i)=>{for(let j=0;j<2;j++){const n=document.createElement('div');n.className='bg-note';n.textContent=sym;const sz=10+Math.random()*14,dur=18+Math.random()*22,delay=Math.random()*dur;n.style.cssText=`left:${Math.random()*95}%;--ns:${sz}px;--nt:${dur}s;animation-delay:-${delay}s;`;bn.appendChild(n);}});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.07});
+document.querySelectorAll('.rev').forEach(r=>obs.observe(r));
+const navLinks=document.querySelectorAll('.nav-links a');
+const secs=document.querySelectorAll('section[id]');
+const nObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;navLinks.forEach(a=>a.classList.toggle('active-nav',a.getAttribute('href')==='#'+id));}});},{threshold:.25});
+secs.forEach(s=>nObs.observe(s));
+</script>
+</body>
+</html>

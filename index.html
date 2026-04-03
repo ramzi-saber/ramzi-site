@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramzi Saber</title>
+<meta name="description" content="Ramzi Saber — science, data, and music portfolio blending astrophysics, engineering, and sound design.">
+<meta name="theme-color" content="#070810">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="rs-shared.css">
+<style>
+html,body{height:100%;overflow:hidden;}
+.landing{height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.half{position:relative;display:flex;flex-direction:column;justify-content:center;padding:72px;overflow:hidden;cursor:none;transition:flex .9s var(--ease);}
+.half:hover{flex:1.08;}
+.hc{background:var(--cosmos);border-right:1px solid var(--cb);}
+.hs{background:var(--studio);}
+.vg{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;animation:pvin 6s ease-in-out infinite;}
+@keyframes pvin{0%,100%{opacity:.2;transform:scale(1);}50%{opacity:.34;transform:scale(1.07);}}
+.v1{width:500px;height:500px;background:rgba(212,160,48,.18);top:-150px;left:-100px;}
+.v2{width:260px;height:260px;background:rgba(200,80,30,.13);bottom:0;right:0;animation-delay:-3s;}
+.vinyl{position:absolute;right:-80px;top:50%;transform:translateY(-50%);width:380px;height:380px;border-radius:50%;background:repeating-radial-gradient(circle,#1a130a 0,#1a130a 8px,#231c10 8px,#231c10 12px);animation:spin 12s linear infinite;opacity:.42;}
+.vinyl::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:radial-gradient(circle,#3a2a10 0%,#d4a030 40%,#2a1a08 41%,#1a130a 100%);}
+@keyframes spin{from{transform:translateY(-50%) rotate(0)}to{transform:translateY(-50%) rotate(360deg)}}
+.orb{position:absolute;left:-60px;top:50%;transform:translateY(-50%);border-radius:50%;border:1px solid rgba(74,108,247,.18);animation:opu 5s ease-in-out infinite;}
+.orb::before{content:'';position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:var(--ca);box-shadow:0 0 10px var(--ca);}
+.orb1{width:360px;height:360px;}
+.orb2{width:270px;height:270px;border-color:rgba(150,100,255,.13);animation-duration:7s;animation-direction:reverse;}
+@keyframes opu{0%,100%{transform:translateY(-50%) scale(1);}50%{transform:translateY(-50%) scale(1.03);}}
+.hlabel{font-size:9.5px;letter-spacing:.25em;text-transform:uppercase;margin-bottom:28px;opacity:.48;}
+.cl{color:var(--ca);}.sl{color:var(--sa);}
+.htitle{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,5.5vw,80px);font-weight:300;line-height:1.05;margin-bottom:24px;position:relative;z-index:2;}
+.ct{color:var(--ct);}.st{color:var(--st);}
+.hsub{font-size:10.5px;letter-spacing:.15em;line-height:1.9;max-width:340px;position:relative;z-index:2;margin-bottom:48px;}
+.cs{color:var(--cm);}.ss{color:var(--sm);}
+/* ENTER BUTTON — large, dramatic */
+.enter-btn{display:inline-flex;align-items:center;gap:14px;font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;text-decoration:none;padding:18px 36px;border:1px solid;position:relative;z-index:2;transition:all .4s var(--ease);cursor:none;align-self:flex-start;overflow:hidden;}
+.enter-btn::before{content:'';position:absolute;inset:0;transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);z-index:-1;}
+.enter-cosmos{color:var(--ca);border-color:rgba(74,108,247,.3);background:rgba(74,108,247,.06);}
+.enter-cosmos::before{background:var(--ca);}
+.enter-cosmos:hover{color:#fff;border-color:var(--ca);}
+.enter-cosmos:hover::before{transform:scaleX(1);}
+.enter-studio{color:var(--sa);border-color:rgba(212,160,48,.3);background:rgba(212,160,48,.06);}
+.enter-studio::before{background:var(--sa);}
+.enter-studio:hover{color:#0a0906;border-color:var(--sa);}
+.enter-studio:hover::before{transform:scaleX(1);}
+.btn-arrow{font-size:16px;transition:transform .3s var(--ease);}
+.enter-btn:hover .btn-arrow{transform:translateX(6px);}
+/* DIVIDER */
+.ldiv{position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:100%;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.13) 30%,rgba(255,255,255,.13) 70%,transparent);z-index:10;pointer-events:none;}
+.dname{position:absolute;top:11%;left:50%;transform:translate(-50%,0);background:#070810;border:1px solid rgba(255,255,255,.11);padding:22px 40px;text-align:center;z-index:20;white-space:nowrap;}
+.dname-main{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.92);display:block;white-space:nowrap;}
+.dname-sub{font-size:10px;letter-spacing:.22em;color:rgba(255,255,255,.3);display:block;margin-top:8px;text-transform:uppercase;white-space:nowrap;}
+/* HINT TEXT */
+.choose-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);text-align:center;z-index:20;animation:fi 2s ease 1s both;}
+.choose-hint p{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.18);}
+.choose-hint-dots{display:flex;justify-content:center;gap:6px;margin-top:10px;}
+.choose-hint-dots span{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.15);}
+.choose-hint-dots span:nth-child(1){background:var(--ca);opacity:.5;}
+.choose-hint-dots span:nth-child(3){background:var(--sa);opacity:.5;}
+@keyframes fi{from{opacity:0;transform:translate(-50%,10px);}to{opacity:1;transform:translate(-50%,0);}}
+/* HERO NUMBER ACCENTS */
+.half-stat{position:absolute;bottom:80px;left:72px;z-index:2;opacity:0;animation:fi 1s ease 0.8s both;}
+.half-stat-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;line-height:1;color:rgba(74,108,247,.15);}
+.half-stat-label{font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(120,140,255,.25);margin-top:4px;}
+.hs .half-stat{left:auto;right:72px;}
+.hs .half-stat-num{color:rgba(212,160,48,.12);}
+.hs .half-stat-label{color:rgba(212,160,48,.2);}
+
+.landing::before{content:'';position:absolute;inset:0;background:
+radial-gradient(circle at 18% 28%, rgba(74,108,247,.12), transparent 30%),
+radial-gradient(circle at 82% 65%, rgba(212,160,48,.1), transparent 28%),
+linear-gradient(to bottom, rgba(255,255,255,.02), transparent 22%, transparent 78%, rgba(255,255,255,.02));
+pointer-events:none;z-index:0;}
+.topnote{position:absolute;top:28px;left:32px;z-index:25;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.36);padding:10px 14px;border:1px solid rgba(255,255,255,.08);background:rgba(7,8,16,.35);backdrop-filter:blur(10px);}
+.half::after{content:'';position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.16), transparent 36%);pointer-events:none;}
+.pills{display:flex;flex-wrap:wrap;gap:8px;position:relative;z-index:2;margin:-12px 0 32px;}
+.pill{font-size:8px;letter-spacing:.16em;text-transform:uppercase;padding:8px 12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);}
+.hc .pill{color:rgba(200,216,255,.76);border-color:rgba(74,108,247,.18);background:rgba(74,108,247,.08);}
+.hs .pill{color:rgba(240,212,144,.75);border-color:rgba(212,160,48,.18);background:rgba(212,160,48,.08);}
+.enter-row{display:flex;align-items:center;gap:16px;position:relative;z-index:2;flex-wrap:wrap;}
+.enter-note{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.36;}
+.center-quote{position:absolute;left:50%;bottom:120px;transform:translateX(-50%);z-index:24;font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,.36);text-align:center;pointer-events:none;max-width:420px;line-height:1.4;}
+.center-quote span{display:block;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;font-style:normal;color:rgba(255,255,255,.22);margin-top:10px;}
+.mini-console{position:absolute;top:28px;right:32px;z-index:25;padding:12px 14px;min-width:170px;border:1px solid rgba(255,255,255,.08);background:rgba(7,8,16,.35);backdrop-filter:blur(10px);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.38);line-height:1.9;}
+.mini-console strong{color:rgba(255,255,255,.82);font-weight:500;}
+.scanline{position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(to bottom,transparent 0%,rgba(255,255,255,.018) 50%,transparent 100%);background-size:100% 7px;mix-blend-mode:soft-light;opacity:.45;}
+
+@media(max-width:768px){
+  .landing{grid-template-columns:1fr;grid-template-rows:1fr 1fr;overflow:auto;height:auto;min-height:100vh;}
+  html,body{overflow:auto;}
+  .half{padding:80px 32px 60px;}
+  .topnote{top:16px;left:16px;font-size:8px;}
+  .mini-console{top:16px;right:16px;min-width:150px;font-size:7.5px;}
+  .center-quote{display:none;}
+  .pills{margin:-8px 0 24px;}
+  .enter-row{align-items:flex-start;gap:10px;}
+  .enter-note{display:none;}
+  .ldiv,.dname{display:none;}
+  .orb,.vinyl{display:none;}
+  .half-stat{display:none;}
+  .choose-hint{bottom:20px;}
+  body{cursor:auto;}.cursor,.cursor-ring{display:none;}
+}
+</style>
+</head>
+<body>
+<div class="page-veil" id="veil"></div>
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="ring"></div>
+
+<div class="landing">
+  <div class="scanline"></div>
+  <div class="topnote">Portfolio · Science / Music</div>
+  <div class="mini-console">Status <strong id="statusMode">Dual Mode</strong><br>Focus <strong id="statusFocus">Creative Technologist</strong></div>
+  <!-- COSMOS HALF -->
+  <div class="half hc" id="cosmosHalf">
+    <div class="stars" id="stL"></div>
+    <div class="neb n1"></div>
+    <div class="neb n2"></div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="hlabel cl">01 — Science &amp; Data</div>
+    <h1 class="htitle ct">Exploring<br>the<br><em>Cosmos</em></h1>
+    <p class="hsub cs">Astrophysics · Data Systems · Scientific Storytelling<br>Caltech · NASA JPL · Published Research<br>Roman Space Telescope · Exoplanets · Public Impact</p>
+    <div class="pills" aria-hidden="true"><span class="pill">Research</span><span class="pill">Data Systems</span><span class="pill">Instrumentation</span></div>
+    <div class="enter-row"><a href="science.html" class="enter-btn enter-cosmos" id="enterScience" aria-label="Enter science and data portfolio">
+      Enter Universe <span class="btn-arrow">→</span>
+    </a><span class="enter-note">Projects · research · media</span></div>
+    <div class="half-stat">
+      <div class="half-stat-num">4</div>
+      <div class="half-stat-label">Publications</div>
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="ldiv">
+    <div class="dname">
+      <span class="dname-main">Ramzi Saber</span>
+      <span class="dname-sub">Two worlds &nbsp;·&nbsp; One mind</span>
+    </div>
+  </div>
+
+  <!-- STUDIO HALF -->
+  <div class="half hs" id="studioHalf">
+    <div class="vg v1"></div>
+    <div class="vg v2"></div>
+    <div class="vinyl"></div>
+    <div class="hlabel sl">02 — Music</div>
+    <h1 class="htitle st">Crafting<br>Sound<br><em>&amp; Soul</em></h1>
+    <p class="hsub ss">Music Production · Guitar · Composition<br>Atmosphere · Distortion · Melody<br>From Union City to the stage to the studio</p>
+    <div class="pills" aria-hidden="true"><span class="pill">Production</span><span class="pill">Guitar</span><span class="pill">Songwriting</span></div>
+    <div class="enter-row"><a href="music.html" class="enter-btn enter-studio" id="enterStudio" aria-label="Enter music portfolio">
+      Enter Studio <span class="btn-arrow">→</span>
+    </a><span class="enter-note">Releases · visuals · sound</span></div>
+    <div class="half-stat">
+      <div class="half-stat-num">10+</div>
+      <div class="half-stat-label">Years playing guitar</div>
+    </div>
+  </div>
+
+  <!-- BOTTOM HINT -->
+  <div class="choose-hint">
+    <p>Choose a side</p>
+    <div class="choose-hint-dots">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="center-quote" id="centerQuote">Two worlds. One frequency.<span>Use ← and → to move between them</span></div>
+</div>
+
+<script>
+const cur=document.getElementById('cur'),ring=document.getElementById('ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+document.querySelectorAll('a').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hov'));el.addEventListener('mouseleave',()=>ring.classList.remove('hov'));});
+(function animR(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animR);})();
+
+function mkStars(id,n){const c=document.getElementById(id);if(!c)return;for(let i=0;i<n;i++){const s=document.createElement('div');s.className='star';const sz=Math.random()*2+.4;s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--mn:${.1+Math.random()*.3};--mx:${.5+Math.random()*.5};animation-delay:${Math.random()*5}s`;c.appendChild(s);}}
+mkStars('stL',150);
+
+// Cinematic transition on enter
+const veil=document.getElementById('veil');
+function goTo(url,color){
+  veil.style.background=color;
+  veil.classList.add('show');
+  setTimeout(()=>window.location.href=url,600);
+}
+document.getElementById('enterScience').addEventListener('click',e=>{e.preventDefault();goTo('science.html','#05060f');});
+document.getElementById('enterStudio').addEventListener('click',e=>{e.preventDefault();goTo('music.html','#0a0906');});
+
+// Fade in on arrival
+window.addEventListener('load',()=>{setTimeout(()=>veil.classList.remove('show'),80);});
+const statusMode=document.getElementById('statusMode');
+const statusFocus=document.getElementById('statusFocus');
+const centerQuote=document.getElementById('centerQuote');
+const quotes=[
+  ['Two worlds. One frequency.','Use ← and → to move between them'],
+  ['Built in data. Driven by feeling.','A portfolio split between precision and atmosphere'],
+  ['Astrophysics on one side. Distortion on the other.','Same mind. Different instruments']
+];
+let q=0; setInterval(()=>{q=(q+1)%quotes.length; centerQuote.innerHTML=`${quotes[q][0]}<span>${quotes[q][1]}</span>`;},4200);
+function setMode(side){
+  if(side==='science'){statusMode.textContent='Science';statusFocus.textContent='Research / Systems';}
+  else{statusMode.textContent='Music';statusFocus.textContent='Production / Guitar';}
+}
+document.getElementById('cosmosHalf').addEventListener('mouseenter',()=>setMode('science'));
+document.getElementById('studioHalf').addEventListener('mouseenter',()=>setMode('music'));
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowLeft') goTo('science.html','#05060f');
+  if(e.key==='ArrowRight') goTo('music.html','#0a0906');
+});
+</script>
+</body>
+</html>
